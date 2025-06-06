@@ -7,7 +7,12 @@ import spacy
 
 # Load data and model
 df = pd.read_csv('dataset_cultureMonkey.csv')
-nlp = spacy.load('en_core_web_sm')
+import spacy.cli
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 # Normalize column names
 df.columns = df.columns.str.strip().str.lower()
