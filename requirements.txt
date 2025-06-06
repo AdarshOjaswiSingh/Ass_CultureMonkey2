@@ -6,3 +6,8 @@ scikit-learn
 seaborn
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
 wordcloud
+fastapi==0.110.1
+uvicorn==0.29.0
+pydantic==2.6.4
+requests==2.31.0
+
