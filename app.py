@@ -6,7 +6,7 @@ import joblib
 import spacy
 
 # Load data and model
-df = pd.read_csv('data/job_postings.csv')
+df = pd.read_csv('dataset_cultureMonkey.csv')
 nlp = spacy.load('en_core_web_sm')
 
 # Normalize column names
