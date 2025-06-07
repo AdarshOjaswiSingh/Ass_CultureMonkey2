@@ -21,8 +21,8 @@ Original file is located at
 # with open("skill_model.pkl", "rb") as f:
 #     skill_freq = pickle.load(f)
 # 
-# class JobDescription(BaseModel):
-#     job_description: str
+# class job_description_text(BaseModel):
+#     job_description_text: str
 # 
 # def extract_skills(text):
 #     return re.findall(r'\b[A-Za-z\+\.\#]{2,}\b', text)
@@ -34,8 +34,8 @@ Original file is located at
 #     return category, round(score, 2)
 # 
 # @app.post("/skill-trend")
-# def detect_skills(data: JobDescription):
-#     skills = extract_skills(data.job_description)
+# def detect_skills(data: job_description_text):
+#     skills = extract_skills(data.job_description_text)
 #     result = [
 #         {"skill": s, "category": classify_skill(s)[0], "trend_score": classify_skill(s)[1]}
 #         for s in skills
