@@ -23,9 +23,31 @@ print(df.columns)  # For column name verification
 df['job_description_text'] = df['job_description_text'].fillna("")
 df['seniority_level'] = df['seniority_level'].fillna("Unknown")
 
+KNOWN_SKILLS = {
+    "python", "java", "c++", "c#", "sql", "pandas", "numpy", "tensorflow", "pytorch",
+    "scikit-learn", "matplotlib", "seaborn", "aws", "azure", "gcp", "docker", "kubernetes",
+    "git", "linux", "bash", "hadoop", "spark", "machine learning", "deep learning", "nlp",
+    "data analysis", "data visualization", "flask", "fastapi", "html", "css", "javascript",
+    "react", "node.js", "mongodb", "postgresql", "mysql", "powerbi", "tableau", "airflow"
+}
+
+import re
+
 def extract_skills(text):
-    skills = re.findall(r'\b[A-Za-z\+\.\#]{2,}\b', text)
-    return [s.lower() for s in skills if len(s) > 2]
+    # Normalize text
+    text = text.lower()
+
+    # Tokenize and filter
+    tokens = re.findall(r'\b[\w\+\.\#]+\b', text)
+
+    # Match against known skills
+    matched = set()
+    for skill in KNOWN_SKILLS:
+        if skill in text:
+            matched.add(skill)
+    
+    # Return sorted unique skills
+    return sorted(matched)
 
 df['skills'] = df['job_description_text'].apply(extract_skills)
 
